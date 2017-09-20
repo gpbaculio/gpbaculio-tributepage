@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  vertical-align: baseline;
+}
+div {
+  position:relative;
+  z-index: 2;
+}
+.active {
+  font-weight: bold;
+}
+.online {
+  background-color: #78C37B;
+  color: white;
+}
+.channelLink {
+  color: black;
+  text-decoration: none;
+}
+.channelLink:hover {
+  text-decoration: underline;
+}
+body {
+  background-color: #006400;
+  color: #333;
+  font-family: 'Raleway', sans-serif;
+  font-weight:400;
+}
+.channel {
+  background-color: white !important;
+}
+.title {
+  width:450px;
+  text-align:center;
+  display:block;
+  margin:50px auto 10px auto;
+  font-size:18px;
+  color:#fff;
+  }
+  
+.tempUnit:hover {
+  text-decoration: underline;
+}
+.footer {
+  width:450px;
+  text-align:center;
+  display:block;
+  margin:15px auto 30px auto;
+  font-size:1em;
+  color:#fff;
+  
+}
+
+.container {
+  border-radius:3px;
+  position:relative;
+  margin:5% auto auto auto;
+  width:450px;
+  padding:40px 50px;
+  display:table;
+  background-color:#E9EBEE;
+  text-align:center;
+}
+
+  .buttons {
+    width:450px;
+    margin:auto;
+    display:block;
+  }
+   
+.length-container > div {
+  float:left;
+  height: 25px;
+  width: 50;
+  background-color: #ECE7EE !important;
+  padding: 15px;
+  margin: 13.5px;
+}    
+.length-container {
+  box-sizing: border-box;
+  width: 320px;
+  height: 80px;
+  position: relative;
+  text-align: center;
+  margin: auto;
+ 
+}  
+
+p, h2 {
+  color: #fff;
+  text-align:center;
+}
+
+#clock {
+  width:300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow:hidden;
+  position:relative;
+  margin:20px auto;
+  cursor: pointer;
+  -moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;
+}
+
+.button:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#clock div.inner {
+  background-color: #E55451;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+#clock span {
+  color: #fff;
+  display:block;
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 140px;
+  z-index: 2;
+}
+
+#options {
+  color:#fff;
+  font-size:20px;
+  text-align: center;
+}
+#options input {
+  color: #666;
+  width: 50px;
+  padding: 5px 0px 5px 5px;
+  font-size: 20px;
+  background-color: #ccc;
+  border: 0px;
+  outline: none;
+  margin: 5px;
+}
+#options input:last-of-type {
+  margin-right: 0px;
+}
