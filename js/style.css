@@ -68,6 +68,8 @@ body {
     width:450px;
     margin:auto;
     display:block;
+    border-radius: 50%;
+    padding: 3px;
   }
    
 .length-container > div {
@@ -108,7 +110,16 @@ p, h2 {
   cursor: pointer;
   font-weight: bold;
 }
-
+.button {
+  height: 26px;
+  width: 26px;
+  font-size: 18px;
+  line-height: 24px;
+  border-radius: 50%;
+  padding: 3px;
+  background-color: #ece7ee;
+  border: solid green 1px;
+}
 #clock div.inner {
   background-color: #E55451;
   width: 100%;

@@ -95,18 +95,18 @@ class App extends Component {
         </div>
         <div className="length-container">
        <div id="break"> 
-        <button disabled={this.state.pause === false || this.state.breakLength===1} className="button" onClick={() => this.setState((state, props) => ({ timeStart: false, breakLength: Math.round(state.breakLength-1)}))}>-</button>
+        <button  disabled={this.state.pause === false || this.state.breakLength===1} className="button" onClick={() => this.setState((state, props) => ({ timeStart: false, breakLength: Math.round(state.breakLength-1)}))}>-</button>
           <span style={{ margin: '0 8px'}}><strong>{Math.round(this.state.breakLength)}</strong></span> 
         <button disabled={this.state.pause === false} className="button" onClick={() => this.setState((state, props) => ({ timeStart: false, breakLength: Math.round(state.breakLength+1)}))}> + </button><br/> Break Length </div>
         <div id="session"> 
-        <button disabled={this.state.pause === false || this.state.sessionLength===1} className="button" onClick={() => this.setState((state, props) => ({ timeStart: false, sessionLength: Math.round(state.sessionLength-1)}))}>-</button> 
+        <button  disabled={this.state.pause === false || this.state.sessionLength===1} className="button" onClick={() => this.setState((state, props) => ({ timeStart: false, sessionLength: Math.round(state.sessionLength-1)}))}>-</button> 
           <span style={{ margin: '0 8px'}}><strong>{Math.round(this.state.sessionLength)}</strong></span>
         <button disabled={this.state.pause === false} className="button" onClick={() => this.setState((state, props) => ({ timeStart: false, sessionLength: Math.round(state.sessionLength+1)}))}> + </button> <br/> Session Length </div>
        </div>
         
               <div style={{marginTop: '40px'}}>
                 <span style={{float: 'left'}}> Deployed Heroku App: <a href="https://gpbaculio-twitchtv-api.herokuapp.com/" target="_blank" > link </a> </span>
-                <span style={{float: 'right'}}> Github Repo: <a href="https://github.com/iamglenbacs/gpbaculio-twitchtv-api" target="_blank" > link </a> </span>
+                <span style={{float: 'right'}}> Github Repo: <a href="https://github.com/iamglenbacs/gpbaculio-pomodoro-clock" target="_blank" > link </a> </span>
             </div>
             </div>
           <span className="footer"> Developed by Glendon Philipp Baculio </span>
