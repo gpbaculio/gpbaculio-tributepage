@@ -50,7 +50,7 @@ class App extends Component {
         return;
       } else if(!this.state.winner){
         if(this.state.computerInputs.length+this.state.playerInputs.length < 9) {
-          setTimeout(() => this._computerTurn(), 4100)
+          setTimeout(() => this._computerTurn(), 4500)
         }
       }
     })
