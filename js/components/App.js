@@ -41,7 +41,6 @@ class App extends Component {
 
     })
     if(!this.state.winner && (this.state.playerInputs.length + this.state.computerInputs.length === 9)) {
-      alert('Draw!')
       this.setState((state, props) => ({ draw: true}));
     }
   }
