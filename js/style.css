@@ -8,6 +8,22 @@ div {
   position:relative;
   z-index: 2;
 }
+.itemTac:hover {
+  border: solid green 1.5px;
+}
+.x:hover {
+  font-weight: bold;
+  font-size:28px;
+  cursor: pointer;
+}
+
+.o:hover {
+  font-weight: bold;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+
 .active {
   font-weight: bold;
 }
