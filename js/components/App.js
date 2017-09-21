@@ -34,7 +34,6 @@ class App extends Component {
         } else {
           winner = 'You'
         }
-        setTimeout(() => alert(winner+' won!'), 500)
         this.setState((state, props) => ({ winner }));
 
       }
@@ -51,7 +50,7 @@ class App extends Component {
         return;
       } else if(!this.state.winner){
         if(this.state.computerInputs.length+this.state.playerInputs.length < 9) {
-          setTimeout(() => this._computerTurn(), 4500)
+          setTimeout(() => this._computerTurn(), 4100)
         }
       }
     })
@@ -105,14 +104,15 @@ class App extends Component {
     if(this.state.winner) {
           setTimeout(() => {
             location.reload()
-        },3000)
+        },4000)
    
       return this.state.winner+' won!'
     }
     if(this.state.draw) {
       setTimeout(() => {
+
         location.reload()
-      },3000)
+      },4000)
       return 'Draw!'
     }
     return Boolean(this.state.firstTurn[this.state.firstTurn.length-1] % 2 === 0) ? 'Your turn' : 'Computers\' turn';
