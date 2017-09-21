@@ -132,7 +132,7 @@ class App extends Component {
 
     return (
         <div> 
-          <span className="title"> ReactJs Pomodoro Clock </span>
+          <span className="title"> ReactJs TicTacToe </span>
             <div className="container">
               <div> Advanced FrontEnd Development Project </div>
                {this.state.playerType ? 
