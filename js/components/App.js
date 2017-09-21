@@ -149,7 +149,7 @@ class App extends Component {
                   </div> 
                 </div>)}
               <div style={{marginTop: '30px'}}>
-                <span style={{float: 'left'}}> Deployed Heroku App: <a href="https://gpbaculio-pomodoro-clock.herokuapp.com/" target="_blank" > link </a> </span>
+                <span style={{float: 'left'}}> Deployed Heroku App: <a href="https://gpbaculio-tictactoe.herokuapp.com/" target="_blank" > link </a> </span>
                 <span style={{float: 'right'}}> Github Repo: <a href="https://github.com/iamglenbacs/gpbaculio-tictactoe" target="_blank" > link </a> </span>
               </div>
             </div>
