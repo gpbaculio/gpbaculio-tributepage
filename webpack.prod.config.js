@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path    = require('path');
 module.exports = {
   devtool: 'source-map',
-  entry: [path.resolve(__dirname, 'js', 'index.js')],
+  entry: [path.resolve(__dirname, 'js', 'app.js')],
   module: {
     loaders: [
       {
