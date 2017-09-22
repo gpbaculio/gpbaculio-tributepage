@@ -2,159 +2,240 @@ import 'babel-polyfill'
 import React, { Component } 
   from 'react';
 
-class App extends Component {
-
-  state = {
-    boxes: [1,2,3,4,5,6,7,8,9],
-    winningPairs: [ [1,2,3], [4,5,6], [7,8,9], [1,5,9], [3,5,7],[1,4,7],[2,5,8],[3,6,9]],
-    playerInputs:[],
-    computerInputs:[],
-    result: '',
-    playerType: false,
-    computerType: false,
-    firstTurn: [],
-    winner:false,
-    playerCanClick: true,
-    draw:false
+class Button extends Component {
+  onButtonClick = (e) => {
+      this.props.handleMethods(e.target.value);
   }
-
-  checkWinner = (inputs) => {
-    this.state.winningPairs.forEach((item, index) => {
-       var win =[]
-      inputs.forEach((inputItem, inputIndex) => {
-        if(item.includes(inputItem)) {
-          win.push(inputItem)
-        }
-      })
-
-      if(win.length === 3) {
-        var winner;
-        if(inputs === this.state.computerInputs) {
-          winner = 'Computer'
-        } else {
-          winner = 'You'
-        }
-        this.setState((state, props) => ({ winner }));
-
+  _buttonStyle = () => {
+    if([1,2,3].includes(this.props.item)) {
+        return {
+        top: '-35px',
+        position: 'relative',
+        margin: '10px',
+        fontSize: '24px',
+        width: '50px',
+        height: '50px',
+        border: 'solid #00ADE8 1px',
+        color: '#00ADE8'
       }
-
-    })
-    if(!this.state.winner && (this.state.playerInputs.length + this.state.computerInputs.length === 9)) {
-      this.setState((state, props) => ({ draw: true}));
     }
-  }
-  _onPlayerClick = (item) => {
-    this.setState((state, props) => ({ playerCanClick: false, firstTurn: [...state.firstTurn, state.firstTurn[state.firstTurn.length-1]+1 ], playerInputs: [...state.playerInputs, item] }), () => {
-      this.checkWinner(this.state.playerInputs)
-      if(this.state.winner) {
-        return;
-      } else if(!this.state.winner){
-        if(this.state.computerInputs.length+this.state.playerInputs.length < 9) {
-          setTimeout(() => this._computerTurn(), 4500)
-        }
+    if(this.props.item===0) {
+      return {
+        position: 'absolute',
+        top: '361px',
+        width: '120px',
+        left: '10px',
+        margin: '10px',
+        fontSize: '24px',
+        height: '50px',
+        border: 'solid #00ADE8 1px',
+        color: '#00ADE8'
       }
-    })
+    }
+    if(this.props.item==='.') {
+      return {
+        position: 'absolute',
+        top: '361px',
+        width: '50px',
+        left: '150px',
+        margin: '10px',
+        fontSize: '24px',
+        height: '50px',
+        border: 'solid #00ADE8 1px',
+        color: '#00ADE8'
+      }
+    }
+    if(['AC','CE'].includes(this.props.item)) {
+      return {
+        margin: '10px',
+        fontSize: '20px',
+        width: '50px',
+        height: '50px',
+        border: 'solid white 1px',
+        backgroundColor: '#00ADE8',
+        color: 'white'
+      }
+    }
+    if(this.props.item === '=') {
+      return {
+        position: 'relative',
+        margin: '10px',
+        fontSize: '24px',
+        width: '50px',
+        height: '120px',
+        border: 'solid white 1px',
+        backgroundColor: '#00ADE8',
+        color: 'white'
+      };
+    }
+    return {
+        margin: '10px',
+        fontSize: '24px',
+        width: '50px',
+        height: '50px',
+        border: 'solid #00ADE8 1px',
+        color: '#00ADE8'
+    }
   }
 
-  _computerTurn = () => {
-    var item = this._strictGetRandomArbitrary();
-    this.setState((state, props) => ({ playerCanClick: true, firstTurn: [...state.firstTurn, state.firstTurn[state.firstTurn.length-1]+1 ], computerInputs:[...state.computerInputs, item] }), () => {
-      this.checkWinner(this.state.computerInputs)
-    });
-  }
+  _toDisable = () => {
+    var g = []; // if length of this === 0, that means there's no operator on history, yet
+    
+    this.props.history.split('').map((item,index) => ['+','x','-','÷'].map((i) => {
+      if(i === item) {
+        g.push(i)
+      } 
+    }));
 
-  _strictGetRandomArbitrary = () => {
-    var item = Math.round(Math.random() * (9 - 1) + 1)
-    if(this.state.computerInputs.includes(item)) {
-      return this._strictGetRandomArbitrary()
-    } else if(this.state.playerInputs.includes(item)) {
-      return this._strictGetRandomArbitrary()
+    if(this.props.item==="=" && ['+','x','-','÷'].includes(this.props.history.charAt(this.props.history.length-1))){
+      return true;
+    } else if(this.props.item==="=" && g.length === 0) {
+      return true;
     } else {
-      return item;
+      return false;
     }
-  }
-
-  getRandomArbitrary = (min, max) => {
-    return Math.round(Math.random() * (max - min) + min);
-  }
-
-  _firstTurn = () => {
-    return this.getRandomArbitrary(1,2);
-  }
-
-  componentDidMount() {
-    this.setState((state, props) => ({ firstTurn: [...state.firstTurn, this._firstTurn()] }), () => {
-      if(Boolean(this.state.firstTurn.length === 1 && this.state.firstTurn[this.state.firstTurn.length-1] % 2 !== 0)) {
-        setTimeout(() => this._computerTurn(), 600)
-      }  
-    })
-  }
-
-  _showType = (item) => {
-    if(this.state.computerInputs.includes(item)) {
-      return this.state.computerType;
-    } else if(this.state.playerInputs.includes(item)) {
-      return this.state.playerType;
-    } else {
-      return '';
-    }
-  }
-
-  _showWinner = () => {
-    if(this.state.winner) {
-          setTimeout(() => {
-            location.reload()
-        },4000)
-   
-      return this.state.winner+' won!'
-    }
-    if(this.state.draw) {
-      setTimeout(() => {
-
-        location.reload()
-      },4000)
-      return 'Draw!'
-    }
-    return Boolean(this.state.firstTurn[this.state.firstTurn.length-1] % 2 === 0) ? 'Your turn' : 'Computers\' turn';
-  }
-
-  _disableButton = (item) => {
-    if(this.state.playerInputs.includes(item) || this.state.computerInputs.includes(item)) {
-      return true
-    }
-    if(!this.state.playerCanClick) {
-      return true
-    } 
   }
 
   render() {
 
     return (
-        <div> 
-          <span className="title"> ReactJs TicTacToe </span>
-            <div className="container">
-              <div> Advanced FrontEnd Development Project </div>
-               {this.state.playerType ? 
-                (<div><div style={{margin:'40px auto 0 auto', textAlign: 'center', height: '350px', width: '350px'}}>
-                  {this.state.boxes.map((item,index) => {
-                    return (<button disabled={this._disableButton(item)} key={index} className="itemTac" onClick={(e) => this._onPlayerClick(item)} style={{ cursor: 'pointer', float: 'left', fontSize:'36px', display: 'inline-block', border: "solid #333 1px", height: '33%', lineHeight: '33%', width: '33%', position: 'relative', boxSizing: 'border-box'}}>
-                            {this._showType(item)}</button>)
-                  })}
-                </div><div style={{marginTop: '16px', fontSize: '24px'}}> {this._showWinner()}</div></div>) : 
-                (<div style={{ color: 'white', backgroundColor: '#4caf50', padding: '12px 24px 24px 12px', marginTop: '40px'}}> Choose between <span style={{ color: '#006400', margin: '3px' }}>X</span> or <span style={{ color: '#006400', margin: '3px' }}>O</span>?
-                  <div style={{marginTop: '12px'}}>
-                    <span style={{ margin: '8px', fontSize: '20px', color: '#006400'}} className="x" onClick={() => this.setState((state, props) => ({ playerType: 'X', computerType: 'O'}))}> X </span> 
-                    <span style={{ margin: '8px', fontSize: '20px', color: '#006400'}} className="o" onClick={() => this.setState((state, props) => ({ playerType: 'O', computerType: 'X'}))}> O </span>
-                  </div> 
-                </div>)}
-              <div style={{marginTop: '30px'}}>
-                <span style={{float: 'left'}}> Deployed Heroku App: <a href="https://gpbaculio-tictactoe.herokuapp.com/" target="_blank" > link </a> </span>
-                <span style={{float: 'right'}}> Github Repo: <a href="https://github.com/iamglenbacs/gpbaculio-tictactoe" target="_blank" > link </a> </span>
-              </div>
-            </div>
-          <span className="footer"> Developed by Glendon Philipp Baculio </span>
-        </div>
-    )
+      <button
+        disabled={this._toDisable()}
+        className="btn btn-default"
+        style={this._buttonStyle()}
+        value={this.props.item}
+        onClick={(e) => this.onButtonClick(e)}
+        >{this.props.item}</button>
+    );
   }
 }
-export default App
+class App extends Component {
+
+    state = {      
+      answer: '0',
+      history: '0'
+    };
+
+    _renderButtons = () => {
+      // chars for our calculator
+      let items = ['AC', 'CE', '÷','x',7,8,9,'-',4,5,6,'+',1,2,3,'=',0,'.']; 
+      return items.map((item) => {
+        return(<Button 
+                history={this.state.history}
+                handleMethods={this.handleMethods}
+                item = {item}
+              />);
+      });
+    }
+    
+    handleUserInput = (item) => {
+      var answerState, historyState;
+      if(this.state.answer.includes('.') && item === '.') {
+        return;
+      }
+      if(this.state.answer.charAt(0) === '0' && item === '0') {
+        return;
+      }
+      if(['+','x','-','÷'].includes(this.state.answer.charAt(this.state.answer.length-1)) && ['+','x','-','÷'].includes(item)){
+        return;
+      }
+      if(['+','x','-','÷'].includes(item)){
+        answerState = item;
+        historyState = this.state.history.concat(item);
+        if(this.state.history.includes('=')) {
+          historyState = this.state.answer.concat(item)
+        }
+      } else if(['+','x','-','÷'].includes(this.state.answer.charAt(0))) {
+        answerState = item;
+        historyState = this.state.history.concat(item)
+      } else if(item === '=') {
+        var formulaEval = this.state.history;
+            formulaEval = formulaEval.toString();
+        if(formulaEval.includes('x')) {
+          formulaEval = formulaEval.replace(/(\x)/,'*')
+        }
+        if(formulaEval.includes('÷')) {
+          formulaEval = formulaEval.replace(/(\÷)/,'/')
+        }
+        answerState = eval(formulaEval.toString());
+        answerState = answerState.toString();
+        if(answerState.includes('.')) {
+          answerState = Number(answerState).toFixed(2)
+          answerState = answerState.toString()
+        }
+        historyState = formulaEval.toString();
+        if(historyState.toString().includes('/')) {
+          historyState = historyState.replace(/(\/)/,'÷')
+        }
+        if(historyState.toString().includes('*')) {
+          historyState = historyState.replace(/(\*)/,'x')
+        }
+        historyState = historyState.concat('='+answerState)
+      } else if(this.state.history.includes('=')) {
+        answerState = item;
+        historyState = item;
+      }else {
+        answerState = this.state.answer.concat(item)
+        historyState = this.state.history.concat(item)
+      }
+      this.setState((state, props) => ({ answer: answerState.toString(), history: historyState.toString() }));
+    }
+
+    handleMethods = (item) => {
+      if(item==="AC") {
+        this.setState((state, props) => ({
+          answer: '0',
+          history: '0'
+        }));
+        return;
+      } 
+      if(item==="CE") {
+        if(!this.state.history.includes('=') && this.state.answer === this.state.history.slice(-this.state.answer.length) && this.state.history.length>this.state.answer.length) {
+          this.setState((state, props) => ({ answer: '0', history: this.state.history.slice(0, -this.state.answer.length) }));
+          return;
+        } else if(this.state.history.includes('=')) {
+          this.setState((state, props) => ({ answer: '0', history: '0' }));
+        }else {
+          this.setState((state, props) => ({ answer: '0', history: '0' }));
+          return;
+        }
+      } else if(this.state.history === '0' && this.state.answer === '0') {
+        this.setState((state, props) => ({ answer: '', history: ''}), () => this.handleUserInput(item));
+      } else if( this.state.answer === '0' && ['+','x','-','÷'].includes(this.state.history.charAt(this.state.history.length-1))) {
+         this.setState((state, props) => ({ answer: '' }), () => this.handleUserInput(item));
+      }else {
+        console.log("ce failed")
+        this.handleUserInput(item) 
+      } 
+    }
+
+  render() {
+
+    let { answer, history, warning } = this.state;
+
+    return (<div><span className="title"> Reactjs Calculator </span>
+            <div className="container">
+            <div className="calculator">
+              <div className="text-center">
+                <div className="display-container">
+                  <p className="display" id="answer">{answer}</p>
+                  <p className="display" id="history">{history}</p>
+                </div>
+                {this._renderButtons()}
+                <p>{warning}</p>
+              </div>
+            </div>
+            <div> 
+              <div style={{marginTop: '40px'}}>
+                  <span style={{float: 'left'}}> Deployed Heroku App: <a href="https://gpbaculio-twitchtv-api.herokuapp.com/" target="_blank" > link </a> </span>
+                  <span style={{float: 'right'}}> Github Repo: <a href="https://github.com/iamglenbacs/gpbaculio-twitchtv-api" target="_blank" > link </a> </span>
+              </div>
+            </div>
+          
+        </div>
+        <span className="footer"> Developed by Glendon Philipp Baculio </span>
+    </div>);
+  }
+}
+
+export default App;
