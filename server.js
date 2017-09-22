@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * This file provided by Facebook is for non-commercial testing and evaluation
  * purposes only.  Facebook reserves all rights not expressly granted.
@@ -19,11 +20,32 @@ import {schema} from './data/schema';
   var app = express();
 const indexPath = path.join(__dirname, './public/index.html')
 const publicPath = express.static(path.join(__dirname, './public'))
+=======
+const path    = require('path');
+const express = require('express');
+var graphQLHTTP = require('express-graphql');
+import {schema} from './data/schema'
+module.exports = {
+  app: function () {
+    const app = express();
+    const indexPath = path.join(__dirname, './public/index.html')
+    const publicPath = express.static(path.join(__dirname, './public'))
+>>>>>>> 986123cadb8d3cee76a008c90a6b7245b77a5d33
 
     app.use('/public', publicPath)
     app.use('/graphql', graphQLHTTP({graphiql: true, schema, pretty: true})); // graphql endpoint
     app.get('/', function (_, res) { res.sendFile(indexPath) });
+<<<<<<< HEAD
   let http = require('http');
   let server = http.createServer(app);
   server.listen(4000, () => console.log("app in 4000"));
+=======
+    app.set('port', 4000);
+	let http = require('http');
+	let server = http.createServer(app);
+	server.listen(4000);
+    return app;
+  }
+}
+>>>>>>> 986123cadb8d3cee76a008c90a6b7245b77a5d33
 
