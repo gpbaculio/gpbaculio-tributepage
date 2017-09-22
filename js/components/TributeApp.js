@@ -37,7 +37,7 @@ class TributeApp extends React.Component {
           onClick={() => this._loadMore()}
         > Load More </button>
               <div style={{marginTop: '40px'}}>
-                  <span style={{float: 'left'}}> Deployed Heroku App: <a href="https://gpbaculio-calculator.herokuapp.com/" target="_blank" > link </a> </span>
+                  <span style={{float: 'left'}}> Deployed Heroku App: <a href="https://gpbaculio-tributeapp.herokuapp.com/" target="_blank" > link </a> </span>
                   <span style={{float: 'right'}}> Github Repo: <a href="https://github.com/iamglenbacs/gpbaculio-tributepage" target="_blank" > link </a> </span>
               </div>
             </div>
