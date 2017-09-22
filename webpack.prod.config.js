@@ -21,8 +21,15 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/public/'
   },
+<<<<<<< HEAD
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
+=======
+  devtool: "source-map",
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+>>>>>>> 14ee168bfe1a5dd21a766568cd371a8a4c6e95d1
       minimize: true,
       compress: {
         warnings: false
@@ -32,6 +39,13 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       }
+<<<<<<< HEAD
     })
+=======
+    }),
+     new webpack.LoaderOptionsPlugin({
+    debug: true
+  })
+>>>>>>> 14ee168bfe1a5dd21a766568cd371a8a4c6e95d1
   ]
 };

@@ -1,3 +1,7 @@
 .DS_Store
 __generated__/
+<<<<<<< HEAD
 node_modules
+=======
+node_modules/
+>>>>>>> 14ee168bfe1a5dd21a766568cd371a8a4c6e95d1
