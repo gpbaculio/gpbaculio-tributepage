@@ -16,6 +16,7 @@ import path from 'path';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import {schema} from './data/schema';
+const port = (process.env.PORT || 8080)
   var app = express();
 const indexPath = path.join(__dirname, './public/index.html')
 const publicPath = express.static(path.join(__dirname, './public'))
@@ -25,5 +26,5 @@ const publicPath = express.static(path.join(__dirname, './public'))
     app.get('/', function (_, res) { res.sendFile(indexPath) });
   let http = require('http');
   let server = http.createServer(app);
-  server.listen(4000, () => console.log("app in 4000"));
+  server.listen(port);
 
