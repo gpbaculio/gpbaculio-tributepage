@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  vertical-align: baseline;
+}
+div {
+  position:relative;
+  z-index: 2;
+}
+
+
+body {
+  background-color: #006400;
+  color: #333;
+  font-family: 'Raleway', sans-serif;
+  font-weight:400;
+}
+
+      #content {
+        height: auto;
+        width: 300px;
+        border-radius: 4px;
+        border: solid #00ADE8 1px;
+        margin: 100px auto;
+      }
+      
+      .display {
+        font-size: 14px;
+        background-color: #00ADE8;
+        
+      }
+      
+      .display-container {
+        position: relative;
+        width: 90%;
+        height: auto;
+        margin: 12px auto;
+        border-radius: 12px;
+      }
+
+      #answer {
+        padding-right: 6px;
+        position: relative;
+        text-align: right;
+        font-size: 32px;
+        font-weight: 500;
+        white-space: nowrap;
+        background-color: #e4dddd;
+        margin: auto;
+        border-radius: 4px 4px 0 0;
+        height: 40px;
+      }
+      #history {
+        height: 30px;
+        padding-right: 6px;
+        text-align: right;
+        font-size: 21px;
+        position: relative;
+        margin: auto;
+        border-radius: 0 0 4px 4px;
+        white-space: nowrap;
+        background-color: #e4dddd;
+      }
+.title {
+  width:450px;
+  text-align:center;
+  display:block;
+  margin:50px auto 10px auto;
+  font-size:18px;
+  color:#fff;
+  }
+
+.calculator {
+  position: relative;
+  text-align: center;
+  padding: 12px;
+  padding-bottom: -10px;
+  background-color: #b4a8a8;
+  width: 300px;
+  margin: auto;
+}
+.tempUnit:hover {
+  text-decoration: underline;
+}
+.footer {
+  width:450px;
+  text-align:center;
+  display:block;
+  margin:15px auto 30px auto;
+  font-size:1em;
+  color:#fff;
+  
+}
+
+.container {
+  border-radius:3px;
+  position:relative;
+  margin:5% auto auto auto;
+  width:450px;
+  padding:40px 50px;
+  display:table;
+  background-color:white;
+  text-align:center;
+}
+
+  .buttons {
+    width:450px;
+    margin:auto;
+    display:block;
+  }
+         
