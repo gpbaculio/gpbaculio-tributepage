@@ -10,11 +10,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-<<<<<<< HEAD
- class User {}
-=======
 export class User {}
->>>>>>> 986123cadb8d3cee76a008c90a6b7245b77a5d33
 
 // Mock authenticated ID
 const VIEWER_ID = 'me';
@@ -46,28 +42,7 @@ var achievements = [
   {id: 11,year: 2017, text: 'I miss my mom, we talk a lot, she provided me everything I needed ever since I was born, I am grateful of everything I have. Though she\'s still not yet here with us, some people, even those whom I do not know would still ask about her and I\'d hear lots of good things about her, I am so proud of my Mom. She\'s the best creature God has made.'}
 ];
 
-<<<<<<< HEAD
- function getMomImageLink() {
-  return 'https://i.imgur.com/aubov86.jpg';
-}
- function getAchievements() {
-  return achievements;
-}
- function getUser(id) {
-  return usersById[id];
-}
 
- function getViewer() {
-  return getUser(VIEWER_ID);
-}
-module.exports = {
-  User,
-  getMomImageLink,
-  getAchievements,
-  getUser,
-  getViewer
-}
-=======
 export function getMomImageLink() {
   return 'https://i.imgur.com/aubov86.jpg';
 }
@@ -81,4 +56,3 @@ export function getUser(id) {
 export function getViewer() {
   return getUser(VIEWER_ID);
 }
->>>>>>> 986123cadb8d3cee76a008c90a6b7245b77a5d33
