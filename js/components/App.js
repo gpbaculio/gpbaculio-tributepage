@@ -189,6 +189,9 @@ class App extends Component {
         }));
         return;
       } 
+      if(this.state.answer.length === 1 && this.state.answer.charAt(0) === '0' && ['+','x','-','÷'].indexOf(item) > -1 && this.state.history.length === 1) {
+        return;
+      }
       if(item==="CE") {
         if(!this.state.history.includes('=') && this.state.answer === this.state.history.slice(-this.state.answer.length) && this.state.history.length>this.state.answer.length) {
           this.setState((state, props) => ({ answer: '0', history: this.state.history.slice(0, -this.state.answer.length) }));
@@ -227,8 +230,8 @@ class App extends Component {
             </div>
             <div> 
               <div style={{marginTop: '40px'}}>
-                  <span style={{float: 'left'}}> Deployed Heroku App: <a href="https://gpbaculio-twitchtv-api.herokuapp.com/" target="_blank" > link </a> </span>
-                  <span style={{float: 'right'}}> Github Repo: <a href="https://github.com/iamglenbacs/gpbaculio-twitchtv-api" target="_blank" > link </a> </span>
+                  <span style={{float: 'left'}}> Deployed Heroku App: <a href="https://gpbaculio-calculator.herokuapp.com/" target="_blank" > link </a> </span>
+                  <span style={{float: 'right'}}> Github Repo: <a href="https://github.com/iamglenbacs/gpbaculio-calculator" target="_blank" > link </a> </span>
               </div>
             </div>
           
