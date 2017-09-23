@@ -5,7 +5,7 @@ const store = new Store(new RecordSource())
 
 
 const fetchQuery = (operation, variables) => {
-  return fetch('/graphql', {
+  return fetch('https://gpbaculio-tributeapp.herokuapp.com/graphql', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
