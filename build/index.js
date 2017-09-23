@@ -26,7 +26,11 @@ var publicPath = express.static(path.join(__dirname, '../public'));
 
 app.use('/public', publicPath);
 app.use('/graphql', graphQLHTTP({ graphiql: true, schema: _schema.schema, pretty: true })); // graphql endpoint
-
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 app.get('/', function (_, res) {
   res.sendFile(indexPath);
 });
