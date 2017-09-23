@@ -1,9 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "start": "babel-node ./server.js",
+    "prestart": "babel -d ./build ./server",
+    "start": "node ./build/",
     "bundle": "webpack --config ./webpack.prod.config.js --progress --colors",
-    "build": "relay-compiler --src ./js/ --schema ./data/schema.graphql",
+    "build": "relay-compiler --src ./js/ --schema ./server/schema.graphql",
     "update-schema": "babel-node ./scripts/updateSchema.js",
     "lint": "eslint ./js"
   },

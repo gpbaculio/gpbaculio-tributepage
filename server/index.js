@@ -10,16 +10,15 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import express from 'express';
-import graphQLHTTP from 'express-graphql';
-import path from 'path';
-import webpack from 'webpack';
-import WebpackDevServer from 'webpack-dev-server';
-import {schema} from './data/schema';
+var express = require('express');
+var graphQLHTTP = require('express-graphql');
+var path = require('path');
+var webpack = require('webpack');
+import { schema } from './schema';
 const port = (process.env.PORT || 8080)
   var app = express();
-const indexPath = path.join(__dirname, './public/index.html')
-const publicPath = express.static(path.join(__dirname, './public'))
+const indexPath = path.join(__dirname, '../public/index.html')
+const publicPath = express.static(path.join(__dirname, '../public'))
 
     app.use('/public', publicPath)
     app.use('/graphql', graphQLHTTP({graphiql: true, schema, pretty: true})); // graphql endpoint
