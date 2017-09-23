@@ -3,9 +3,8 @@ import { Environment, Network, RecordSource, Store, }
 
 const store = new Store(new RecordSource())
 
-
 const fetchQuery = (operation, variables) => {
-  return fetch('https://gpbaculio-tributeapp.herokuapp.com/graphql', {
+  return fetch('/graphql', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

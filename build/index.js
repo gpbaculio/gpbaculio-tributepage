@@ -26,6 +26,7 @@ var publicPath = express.static(path.join(__dirname, '../public'));
 
 app.use('/public', publicPath);
 app.use('/graphql', graphQLHTTP({ graphiql: true, schema: _schema.schema, pretty: true })); // graphql endpoint
+
 app.get('/', function (_, res) {
   res.sendFile(indexPath);
 });
