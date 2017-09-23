@@ -3,12 +3,14 @@ import { Environment, Network, RecordSource, Store, }
 
 const store = new Store(new RecordSource())
 
+
 const fetchQuery = (operation, variables) => {
   return fetch('/graphql', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     },
     body: JSON.stringify({
       query: operation.text,
