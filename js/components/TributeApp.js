@@ -36,7 +36,8 @@ class TributeApp extends React.Component {
         style={{ cursor: 'pointer', backgroundColor:'#E9EBEE', marginTop: '20px', padding: '12px 24px 12px 24px', fontWeight: '600'}}
           onClick={() => this._loadMore()}
         > Load More </button>
-              <div style={{marginTop: '40px'}}>
+        <div style={{position: 'relative', marginTop: '40px'}}> Here's a <a href="https://www.facebook.com/photo.php?fbid=1571869292834385&set=a.101751119846217.3942.100000339878302&type=3&theater" target="_blank" > proof </a> that my Mom's Real </div>
+              <div style={{marginTop: '30px'}}>
                   <span style={{float: 'left'}}> Deployed Heroku App: <a href="https://gpbaculio-tributeapp.herokuapp.com/" target="_blank" > link </a> </span>
                   <span style={{float: 'right'}}> Github Repo: <a href="https://github.com/iamglenbacs/gpbaculio-tributepage" target="_blank" > link </a> </span>
               </div>
