@@ -9,7 +9,7 @@ const fetchQuery = (operation, variables) => {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
+      'Access-Control-Allow-Origin': 'https://s.codepen.io'
     },
     body: JSON.stringify({
       query: operation.text,
